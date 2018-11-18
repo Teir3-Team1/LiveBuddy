@@ -1,0 +1,17 @@
+body > div,
+body > div > div,
+body > div > div > div.login-form {
+  height: 100%;
+}
+
+.flex {
+  align-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  height: 10.5em;
+  justify-content: space-between;
+}
+
+.login-button {
+  width: 9.5em;
+}
