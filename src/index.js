@@ -12,7 +12,7 @@ import App from './components/App';
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
-  () => {}, // Will use the imported reducers later
+  reducers,
   {},
   composeEnhancers(applyMiddleware(thunk))
 );

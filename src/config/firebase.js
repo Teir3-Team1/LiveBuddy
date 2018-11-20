@@ -5,7 +5,7 @@ import 'firebase/storage';
 
 var config = {
   apiKey: process.env.REACT_APP_FIREBASE_KEY,
-  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
   databaseURL: process.env.REACT_APP_DATABASE_URL,
   projectId: 'livebuddy-app',
   storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
@@ -14,4 +14,6 @@ var config = {
 
 firebase.initializeApp(config);
 
-export default firebase;
+const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
+
+export { googleAuthProvider, firebase as default };
