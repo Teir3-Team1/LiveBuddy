@@ -53,6 +53,7 @@ export class LoginForm extends Component {
                 icon="github"
                 labelPosition="left"
                 size="huge"
+                onClick={this.props.loginWithGithub}
               />
             </Segment>
           </Grid.Column>

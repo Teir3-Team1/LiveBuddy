@@ -17,10 +17,12 @@ firebase.initializeApp(config);
 const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 const facebookAuthProvider = new firebase.auth.FacebookAuthProvider();
 const twitterAuthProvider = new firebase.auth.TwitterAuthProvider();
+const githubAuthProvider = new firebase.auth.GithubAuthProvider();
 
 export {
   googleAuthProvider,
   facebookAuthProvider,
   twitterAuthProvider,
+  githubAuthProvider,
   firebase as default
 };

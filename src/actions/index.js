@@ -1,12 +1,14 @@
 import firebase, {
   googleAuthProvider,
   facebookAuthProvider,
-  twitterAuthProvider
+  twitterAuthProvider,
+  githubAuthProvider
 } from '../config/firebase';
 import {
   LOGIN_WITH_GOOGLE,
   LOGIN_WITH_FACEBOOK,
-  LOGIN_WITH_TWITTER
+  LOGIN_WITH_TWITTER,
+  LOGIN_WITH_GITHUB
 } from './types';
 
 export const loginWithGoogle = () => dispatch => {
@@ -43,6 +45,19 @@ export const loginWithTwitter = () => dispatch => {
       console.log(user);
       dispatch({
         type: LOGIN_WITH_TWITTER,
+        userId: user.uid
+      });
+    });
+};
+
+export const loginWithGithub = () => dispatch => {
+  firebase
+    .auth()
+    .signInWithPopup(githubAuthProvider)
+    .then(({ user }) => {
+      console.log(user);
+      dispatch({
+        type: LOGIN_WITH_GITHUB,
         userId: user.uid
       });
     });
