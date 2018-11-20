@@ -35,6 +35,7 @@ export class LoginForm extends Component {
                 icon="facebook f"
                 labelPosition="left"
                 size="huge"
+                onClick={this.props.loginWithFacebook}
               />
               <Button
                 className="login-button"
@@ -43,6 +44,7 @@ export class LoginForm extends Component {
                 icon="twitter"
                 labelPosition="left"
                 size="huge"
+                onClick={this.props.loginWithTwitter}
               />
               <Button
                 className="login-button"
