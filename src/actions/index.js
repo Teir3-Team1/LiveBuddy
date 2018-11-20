@@ -1,5 +1,5 @@
 import firebase from '../config/firebase';
-import { LOGIN } from './types';
+import { LOGIN, LOGOUT } from './types';
 
 export const login = provider => dispatch => {
   firebase
@@ -12,4 +12,15 @@ export const login = provider => dispatch => {
         userId: user.uid
       });
     });
+};
+
+export const logout = () => dispatch => {
+  firebase
+    .auth()
+    .signOut()
+    .then(() =>
+      dispatch({
+        type: LOGOUT
+      })
+    );
 };

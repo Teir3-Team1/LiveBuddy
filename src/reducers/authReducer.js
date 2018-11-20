@@ -1,4 +1,4 @@
-import { LOGIN } from '../actions/types';
+import { LOGIN, LOGOUT } from '../actions/types';
 
 export default (state = null, action) => {
   switch (action.type) {
@@ -6,6 +6,8 @@ export default (state = null, action) => {
       return {
         userId: action.userId
       };
+    case LOGOUT:
+      return {};
     default:
       return state;
   }
