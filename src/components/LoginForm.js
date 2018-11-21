@@ -3,30 +3,14 @@ import { connect } from 'react-redux';
 import { Button, Grid, Header, Image, Segment } from 'semantic-ui-react';
 
 import * as actions from '../actions';
-import {
-  googleAuthProvider,
-  facebookAuthProvider,
-  twitterAuthProvider,
-  githubAuthProvider
-} from '../config/firebase';
+import { providers } from '../config/firebase';
 
 export class LoginForm extends Component {
   handleClick = e => {
-    let provider;
-    switch (e.target.name) {
-      case 'facebook':
-        provider = facebookAuthProvider;
-        break;
-      case 'twitter':
-        provider = twitterAuthProvider;
-        break;
-      case 'github':
-        provider = githubAuthProvider;
-        break;
-      default:
-        provider = googleAuthProvider;
-    }
-    this.props.login(provider);
+    const authProvider = providers.filter(
+      provider => e.target.name === provider.providerId
+    );
+    this.props.login(authProvider[0]);
   };
 
   render() {
@@ -45,7 +29,7 @@ export class LoginForm extends Component {
             <Segment className="flex">
               <Button
                 className="login-button"
-                name="google"
+                name="google.com"
                 content="Google"
                 color="google plus"
                 icon="google"
@@ -55,7 +39,7 @@ export class LoginForm extends Component {
               />
               <Button
                 className="login-button"
-                name="facebook"
+                name="facebook.com"
                 content="Facebook"
                 color="facebook"
                 icon="facebook f"
@@ -65,7 +49,7 @@ export class LoginForm extends Component {
               />
               <Button
                 className="login-button"
-                name="twitter"
+                name="twitter.com"
                 content="Twitter"
                 color="twitter"
                 icon="twitter"
@@ -75,7 +59,7 @@ export class LoginForm extends Component {
               />
               <Button
                 className="login-button"
-                name="github"
+                name="github.com"
                 content="GitHub"
                 color="black"
                 icon="github"

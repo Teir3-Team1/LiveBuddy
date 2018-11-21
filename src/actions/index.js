@@ -1,9 +1,9 @@
-import firebase from '../config/firebase';
+import { auth } from '../config/firebase';
 import { LOGIN, LOGOUT } from './types';
+import { existingEmailError } from '../functions/authFunctions';
 
 export const login = provider => dispatch => {
-  firebase
-    .auth()
+  auth
     .signInWithPopup(provider)
     .then(({ user }) => {
       console.log(user);
@@ -11,16 +11,14 @@ export const login = provider => dispatch => {
         type: LOGIN,
         userId: user.uid
       });
-    });
+    })
+    .catch(error => existingEmailError(error));
 };
 
 export const logout = () => dispatch => {
-  firebase
-    .auth()
-    .signOut()
-    .then(() =>
-      dispatch({
-        type: LOGOUT
-      })
-    );
+  auth.signOut().then(() =>
+    dispatch({
+      type: LOGOUT
+    })
+  );
 };
