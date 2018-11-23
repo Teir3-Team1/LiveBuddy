@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
 
-import LoginForm from './LoginForm';
 import PrivateRoute from './routes/PrivateRoute';
 import PublicRoute from './routes/PublicRoute';
+import LoginForm from './LoginForm';
+import HomePage from './HomePage';
 
-const HomePage = () => <h1>Home Page</h1>; // Sample component for Home Page
 const NotFoundPage = () => <h1>404 Not Found Page</h1>; // Sample component for Wrong Routes
 
 export const history = createHistory();
