@@ -10,9 +10,7 @@ import { auth } from './config/firebase';
 import reducers from './reducers';
 import { LOGIN, LOGOUT } from './actions/types';
 import App, { history } from './components/App';
-// import LoadingPage from './components/LoadingPage';
-
-const LoadingPage = () => <div>Loading ...</div>;
+import LoadingPage from './components/LoadingPage';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
