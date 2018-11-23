@@ -5,8 +5,8 @@ import { existingEmailError } from '../functions/authFunctions';
 export const login = provider => dispatch => {
   auth
     .signInWithPopup(provider)
-    .then(({ user }) => {
-      console.log(user);
+    .then(({ user, credential }) => {
+      auth.signInAndRetrieveDataWithCredential(credential);
       dispatch({
         type: LOGIN,
         userId: user.uid
