@@ -5,8 +5,12 @@ export const login = provider => dispatch => {
   auth.setPersistence(firebase.auth.Auth.Persistence.SESSION).then(() => {
     auth
       .signInWithPopup(provider)
-      .then(({ user, credential }) => {
-        auth.signInAndRetrieveDataWithCredential(credential);
+      .then(({ credential }) => {
+        auth
+          .signInAndRetrieveDataWithCredential(credential)
+          .then(userCredntial => {
+            console.log('User Credential: ', userCredntial);
+          });
       })
       .catch(error => {
         if (error.code === 'auth/account-exists-with-different-credential') {

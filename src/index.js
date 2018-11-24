@@ -39,7 +39,7 @@ ReactDOM.render(<LoadingPage />, root);
 
 auth.onAuthStateChanged(user => {
   if (user) {
-    store.dispatch({ type: LOGIN, userId: user.uid });
+    store.dispatch({ type: LOGIN, uid: user.uid });
     renderApp();
     if (history.location.pathname === '/') {
       history.push('/home');
