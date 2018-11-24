@@ -1,5 +1,5 @@
 import firebase, { auth } from '../config/firebase';
-import { existingEmailError } from '../functions/authFunctions';
+import { handleExistingEmailError } from '../functions/authFunctions';
 
 export const login = provider => dispatch => {
   auth.setPersistence(firebase.auth.Auth.Persistence.SESSION).then(() => {
@@ -8,7 +8,11 @@ export const login = provider => dispatch => {
       .then(({ user, credential }) => {
         auth.signInAndRetrieveDataWithCredential(credential);
       })
-      .catch(error => existingEmailError(error));
+      .catch(error => {
+        if (error.code === 'auth/account-exists-with-different-credential') {
+          handleExistingEmailError(error);
+        }
+      });
   });
 };
 
