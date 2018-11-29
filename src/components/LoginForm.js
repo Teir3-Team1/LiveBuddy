@@ -5,6 +5,33 @@ import { Button, Grid, Header, Image, Segment } from 'semantic-ui-react';
 import * as actions from '../actions';
 import { providers } from '../config/firebase';
 
+const BUTTONS = [
+  {
+    name: 'google.com',
+    content: 'Google',
+    color: 'google plus',
+    icon: 'google'
+  },
+  {
+    name: 'facebook.com',
+    content: 'Facebook',
+    color: 'facebook',
+    icon: 'facebook f'
+  },
+  {
+    name: 'twitter.com',
+    content: 'Twitter',
+    color: 'twitter',
+    icon: 'twitter'
+  },
+  {
+    name: 'github.com',
+    content: 'Github',
+    color: 'black',
+    icon: 'github'
+  }
+];
+
 export class LoginForm extends Component {
   handleClick = e => {
     const authProvider = providers.filter(
@@ -12,6 +39,21 @@ export class LoginForm extends Component {
     );
     this.props.login(authProvider[0]);
   };
+
+  renderbuttons = () =>
+    BUTTONS.map(({ name, content, color, icon }) => (
+      <Button
+        key={name}
+        className="login-button"
+        name={name}
+        content={content}
+        color={color}
+        icon={icon}
+        labelPosition="left"
+        size="huge"
+        onClick={this.handleClick}
+      />
+    ));
 
   render() {
     return (
@@ -26,48 +68,7 @@ export class LoginForm extends Component {
             <Header as="h2" color="grey" textAlign="center">
               Log-in to your account
             </Header>
-            <Segment className="flex">
-              <Button
-                className="login-button"
-                name="google.com"
-                content="Google"
-                color="google plus"
-                icon="google"
-                labelPosition="left"
-                size="huge"
-                onClick={this.handleClick}
-              />
-              <Button
-                className="login-button"
-                name="facebook.com"
-                content="Facebook"
-                color="facebook"
-                icon="facebook f"
-                labelPosition="left"
-                size="huge"
-                onClick={this.handleClick}
-              />
-              <Button
-                className="login-button"
-                name="twitter.com"
-                content="Twitter"
-                color="twitter"
-                icon="twitter"
-                labelPosition="left"
-                size="huge"
-                onClick={this.handleClick}
-              />
-              <Button
-                className="login-button"
-                name="github.com"
-                content="GitHub"
-                color="black"
-                icon="github"
-                labelPosition="left"
-                size="huge"
-                onClick={this.handleClick}
-              />
-            </Segment>
+            <Segment className="flex">{this.renderbuttons()}</Segment>
           </Grid.Column>
         </Grid>
       </div>
