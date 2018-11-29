@@ -20,6 +20,7 @@ const twitterAuthProvider = new firebase.auth.TwitterAuthProvider();
 const githubAuthProvider = new firebase.auth.GithubAuthProvider();
 
 export const auth = firebase.auth();
+export const database = firebase.database();
 
 export const providers = [
   googleAuthProvider,
