@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Grid, Header, Image, Segment } from 'semantic-ui-react';
 
-import * as actions from '../actions';
-import { providers } from '../config/firebase';
+import * as actions from '../../../actions';
+import { providers } from '../../../config/firebase';
 
 const BUTTONS = [
   {
@@ -71,6 +71,7 @@ export class LoginForm extends Component {
             <Segment className="flex">{this.renderbuttons()}</Segment>
           </Grid.Column>
         </Grid>
+
       </div>
     );
   }

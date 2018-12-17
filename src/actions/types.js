@@ -1,2 +1,9 @@
-export const LOGIN = 'login';
-export const LOGOUT = 'logout';
+// AUTH TYPES
+
+export const LOGIN = 'LOGIN';
+export const LOGOUT = 'LOGOUT';
+
+
+// SETTINGS TYPES
+
+export const SETTINGS_SET_COLORS="SETTINGS_SET_COLORS"; 

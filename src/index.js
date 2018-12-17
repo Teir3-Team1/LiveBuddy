@@ -37,9 +37,11 @@ const renderApp = () => {
 
 ReactDOM.render(<LoadingPage />, root);
 
+
+//Firebase Check Logged In.
 auth.onAuthStateChanged(user => {
   if (user) {
-    store.dispatch({ type: LOGIN, uid: user.uid });
+    store.dispatch({ type: LOGIN, payload:user});
     renderApp();
     if (history.location.pathname === '/') {
       history.push('/home');
@@ -50,6 +52,8 @@ auth.onAuthStateChanged(user => {
     history.push('/');
   }
 });
+
+renderApp();
 
 if (module.hot) {
   module.hot.accept('./components/App', () => {

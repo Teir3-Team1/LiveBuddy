@@ -2,10 +2,17 @@ import React, { Component } from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
 
+// Routes
 import PrivateRoute from './routes/PrivateRoute';
 import PublicRoute from './routes/PublicRoute';
-import LoginForm from './LoginForm';
-import HomePage from './HomePage';
+
+// Pages
+import LoginForm from './pages/Auth/LoginForm';
+import HomePage from './pages/HomePage/HomePage';
+
+// CSS
+import '../css/index.scss';
+
 
 const NotFoundPage = () => <h1>404 Not Found Page</h1>; // Sample component for Wrong Routes
 

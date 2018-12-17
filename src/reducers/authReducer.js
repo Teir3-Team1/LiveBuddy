@@ -4,10 +4,14 @@ export default (state = {}, action) => {
   switch (action.type) {
     case LOGIN:
       return {
-        uid: action.uid
+        currentUser:action.payload,
+        isAuthenticated:true        
       };
     case LOGOUT:
-      return {};
+      return {
+        currentUser:{},
+        isAuthenticated:false
+      };
     default:
       return state;
   }
